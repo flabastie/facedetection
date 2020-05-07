@@ -1,6 +1,6 @@
 //
 //  main.c
-//  04_pointeur4
+//  exo04_pointeur4
 //
 //  Created by Francois LABASTIE on 07/05/2020.
 //  Copyright © 2020 Francois LABASTIE. All rights reserved.
