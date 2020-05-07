@@ -14,13 +14,11 @@ void maFonction(int*);
 int main(int argc, const char * argv[]) {
     //
     int x = 10;
-    
     printf("L'adresse de x est %p\n", &x);
     printf("Contenu de x avant l'appel de la fonction: %d\n", x);
     maFonction(&x);
     printf("Valeur de x dans le main après l'appel de fonction : %d\n", x);
     printf("L'adresse de x après l'appel de fonction : %p\n", &x);
-    
     return 0;
 }
 
