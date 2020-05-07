@@ -12,13 +12,11 @@
 void Permut(int*, int*);
 
 int main(int argc, const char * argv[]) {
-    //
     int a, b;
     printf("Saisir un entier a : ");
     scanf("%d",&a);
     printf("Saisir un entier b : ");
     scanf("%d",&b);
-    
     // permutation
     Permut(&a, &b);
     printf("a vaut %d\n", a);
