@@ -1,6 +1,6 @@
 //
 //  main.c
-//  09_exo2_char
+//  09_exo02_char
 //
 //  Created by Francois LABASTIE on 08/05/2020.
 //  Copyright © 2020 Francois LABASTIE. All rights reserved.
