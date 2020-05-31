@@ -22,12 +22,6 @@ class Saisie{
     
     public:
     
-//        // Getter image_name
-//        string GetImageName();
-//
-//        // Getter image_path
-//        string GetImagePath();
-    
         // Getter full_path
         string GetFullPath();
     
@@ -39,8 +33,6 @@ class Saisie{
     
     private:
     
-//        string image_name;
-//        string image_path;
         string full_path;
         const string WHITESPACE = " \n\r\t\f\v";
         
