@@ -19,7 +19,7 @@ using namespace std;
 using namespace cv;
 
 // image à détecter
-const string IMAGE = "/Users/francois/Desktop/NFA037/group3.png";
+string IMAGE = "/Users/francois/Desktop/NFA037/group3.png";
 
 //bool check_input_name(string input_path);
 int display_caption(const char* caption);
@@ -30,6 +30,8 @@ int main( int argc, const char** argv )
 {
     string image_path;
     string image_name;
+    
+    Saisie saisie_image;
     
     // Instanciation classe CommandLineParser pour récupération fichier cascade
     CommandLineParser parser(argc, argv,"{face_cascade|haarcascade_frontalface_alt.xml|Path to face cascade.}");
@@ -45,13 +47,19 @@ int main( int argc, const char** argv )
     // Instanciation classe Mat - Création objet src
     Mat src;
     
+    // Saisie chemin de l'image à charger
+    do {
+        cout << "Saisir le CHEMIN de l'image à charger : \n";
+        getline(std::cin,image_path);
+    } while (!saisie_image.check_input_path(image_path));
+    
+    cout << saisie_image.GetFullPath() << endl;
+    
     // Saisie nom et extension de l'image à charger
-    Saisie saisie_name;
     do {
         cout << "Saisir le nom et l'extension de l'image à charger : \n";
         getline(std::cin,image_name);
-//    } while (true);
-    } while (!saisie_name.check_input_name(image_name));
+    } while (!saisie_image.check_input_name(image_name));
 
     const char* filename = IMAGE.c_str();
     

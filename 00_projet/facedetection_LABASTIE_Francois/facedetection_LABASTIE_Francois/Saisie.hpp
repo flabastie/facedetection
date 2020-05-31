@@ -13,8 +13,6 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <cctype>
-#include <locale>
 
 #endif /* Saisie_hpp */
 
@@ -22,26 +20,34 @@ using namespace std;
 
 class Saisie{
     
-    string image_name;
-    string image_path;
-    const string WHITESPACE = " \n\r\t\f\v";
-
     public:
     
-        // Getter image_name
-        string GetImageName();
+//        // Getter image_name
+//        string GetImageName();
+//
+//        // Getter image_path
+//        string GetImagePath();
     
-        // Getter image_path
-        string GetImagePath();
+        // Getter full_path
+        string GetFullPath();
     
-        string ltrim(const string& s);
-    
-        string rtrim(const string& s);
-    
-        string trim(const string& s);
-
         // Fonction check_input_name
         bool check_input_name(string image_name);
+    
+        // Fonction check_input_path
+        bool check_input_path(string image_path);
+    
+    private:
+    
+//        string image_name;
+//        string image_path;
+        string full_path;
+        const string WHITESPACE = " \n\r\t\f\v";
+        
+        string ltrim(const string& s);
+        string rtrim(const string& s);
+        string trim(string& s);
+        bool has_ending(std::string const &fullString, std::string const &ending);
 
 };
 
