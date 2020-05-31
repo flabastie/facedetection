@@ -27,7 +27,7 @@ bool Saisie::check_input_name(string image_name)
     }
     else{
         // Suppression espaces éventuels "avant" et "après"
-        //trim(image_name);
+        image_name = this->trim(image_name);
         // Recherche espaces "intérieur"
         size_t found=image_name.find(' ');
         if (found!=std::string::npos)
@@ -77,22 +77,26 @@ bool Saisie::check_input_name(string image_name)
     return true;
 }
 
-// trim from start (in place)
-static inline void ltrim(std::string &s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int ch) {
-        return !std::isspace(ch);
-    }));
+string Saisie::ltrim(const string& s)
+{
+    // Recherche début de string (non WHITESPACE)
+    size_t start = s.find_first_not_of(this->WHITESPACE);
+    // Elimination de WHITESPACE de début
+    return (start == std::string::npos) ? "" : s.substr(start);
 }
 
-// trim from end (in place)
-static inline void rtrim(std::string &s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), [](int ch) {
-        return !std::isspace(ch);
-    }).base(), s.end());
+string Saisie::rtrim(const string& s)
+{
+    // Recherche fin de string (non WHITESPACE)
+    size_t end = s.find_last_not_of(this->WHITESPACE);
+    // Elimination de WHITESPACE de fin
+    return (end == std::string::npos) ? "" : s.substr(0, end + 1);
 }
 
-// trim from both ends (in place)
-static inline void trim(std::string &s) {
-    ltrim(s);
-    rtrim(s);
+string Saisie::trim(const string& s)
+{
+    cout << "Trim function used !" << endl;
+    return this->rtrim(this->ltrim(s));
 }
+
+
