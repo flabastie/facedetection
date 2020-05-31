@@ -14,15 +14,12 @@
 #include <algorithm>
 #include <cctype>
 #include <locale>
+#include <ncurses.h>
 #include "Saisie.hpp"
 using namespace std;
 using namespace cv;
 
-// image à détecter
-string IMAGE = "/Users/francois/Desktop/NFA037/group3.png";
-
-//bool check_input_name(string input_path);
-int display_caption(const char* caption);
+//int display_caption(const char* caption);
 void detectAndDisplay(Mat frame);
 CascadeClassifier face_cascade;
 
@@ -31,7 +28,8 @@ int main( int argc, const char** argv )
     string image_path;
     string image_name;
     
-    Saisie saisie_image;
+    // Instanciation objet saisie_image;
+    Saisie Saisie_Image;
     
     // Instanciation classe CommandLineParser pour récupération fichier cascade
     CommandLineParser parser(argc, argv,"{face_cascade|haarcascade_frontalface_alt.xml|Path to face cascade.}");
@@ -49,22 +47,33 @@ int main( int argc, const char** argv )
     
     // Saisie chemin de l'image à charger
     do {
-        cout << "Saisir le CHEMIN de l'image à charger : \n";
+        cout << "---------------------------------------" << endl;
+        cout << "Saisir le CHEMIN de l'image à charger :" << endl;
+        cout << "(Exemple: /Users/myname/foldername/ )"   << endl;
+        cout << "---------------------------------------" << endl;
         getline(std::cin,image_path);
-    } while (!saisie_image.check_input_path(image_path));
-    
-    cout << saisie_image.GetFullPath() << endl;
+    } while (!Saisie_Image.check_input_path(image_path));
     
     // Saisie nom et extension de l'image à charger
     do {
-        cout << "Saisir le nom et l'extension de l'image à charger : \n";
+        cout << endl;
+        cout << "----------------------------------------------" << endl;
+        cout << "Saisir NOM et EXTENSION de l'image à charger :" << endl;
+        cout << "(Exemple: image.png )" << endl;
+        cout << "----------------------------------------------" << endl;
         getline(std::cin,image_name);
-    } while (!saisie_image.check_input_name(image_name));
-
-    const char* filename = IMAGE.c_str();
+    } while (!Saisie_Image.check_input_name(image_name));
+    
+    // image à détecter
+    cout << endl;
+    cout << "---------------------------------------------" << endl;
+    cout << "Image à détecter : " << endl;
+    cout << Saisie_Image.GetFullPath() << endl;
+    cout << "---------------------------------------------" << endl;
+    const char* filename = Saisie_Image.GetFullPath().c_str();
     
     // Chargement image dans objet src
-    src = imread( samples::findFile( filename ), IMREAD_COLOR );
+    src = imread( samples::findFile(filename), IMREAD_COLOR );
     // Test échec chargement => Stop programme
     if (src.empty())
     {
@@ -90,7 +99,7 @@ void detectAndDisplay( Mat frame )
     
     // nbr visages
     long nb_faces = faces.size();
-    cout << "Nbr de visages détectés = " << nb_faces << endl;
+    cout << "Nbr de visages détectés = " << nb_faces << endl << endl;
     
     for ( size_t i = 0; i < faces.size(); i++ )
     {

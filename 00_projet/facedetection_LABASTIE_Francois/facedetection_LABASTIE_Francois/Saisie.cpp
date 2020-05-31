@@ -30,7 +30,7 @@ bool Saisie::check_input_path(string image_path)
     // Test si saisie vide
     if(image_path.empty())
     {
-        cout << "Empty" << endl;
+        cout << "Chaîne saisie vide !" << endl;
         return false;
     }
     else{
@@ -59,7 +59,7 @@ bool Saisie::check_input_path(string image_path)
     // Si chaîne terminée par un slash ou antislash
     if(!this->has_ending(image_path, "/") && !this->has_ending(image_path, "\\"))
     {
-        cout << "aucun slash ou antislsh en fin de chaîne " << endl;
+//        cout << "aucun slash ou antislsh en fin de chaîne " << endl;
         image_path = image_path + "/";
         
 //        size_t found = image_path.find_last_of("/\\");
@@ -159,7 +159,9 @@ bool Saisie::check_input_name(string image_name)
         return false;
     }
     // Chemin, nom et extension acceptés
-    cout << image_name << endl;
+//    cout << image_name << endl;
+    this->full_path += image_name;
+//    cout << this->full_path << endl;
     return true;
 }
 
