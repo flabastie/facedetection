@@ -178,24 +178,7 @@ string Saisie::rtrim(const string& s)
 }
 
 string Saisie::trim(string& s)
-{
-//    // Chaîne à renvoyer
-//    string s_trim = "";
-//
-//    // Recherche début de string (non WHITESPACE)
-//    size_t start = s.find_first_not_of(this->WHITESPACE);
-//    // Elimination de WHITESPACE de début
-//    (start != string::npos) ? s_trim.assign(s.substr(start)) : s_trim.assign(s);
-//
-//    // Recherche fin de string (non WHITESPACE)
-//    size_t end = s.find_last_not_of(this->WHITESPACE);
-//    // Elimination de WHITESPACE de fin
-//    (end != string::npos) ? s_trim.assign(s.substr(0, end + 1)) : s_trim.assign(s);
-//
-//    cout << s_trim;
-//
-//    return s_trim;
-    
+{    
     return this->rtrim(this->ltrim(s));
 }
 
