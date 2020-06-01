@@ -34,7 +34,8 @@ int main( int argc, const char** argv )
         do {
             cout << "---------------------------------------" << endl;
             cout << "Saisir le CHEMIN de l'image à charger :" << endl;
-            cout << "(Exemple: '/Users/myname/foldername/' )"   << endl;
+            cout << "Exemple: '/Users/myname/foldername/' " << endl;
+            cout << "'0' + Enter = sortie du programme"   << endl;
             cout << "---------------------------------------" << endl;
             getline(std::cin,image_path);
         } while (!Saisie_Image.check_input_path(image_path));
@@ -45,6 +46,7 @@ int main( int argc, const char** argv )
             cout << "----------------------------------------------" << endl;
             cout << "Saisir NOM et EXTENSION de l'image à charger :" << endl;
             cout << "(Exemple: 'image.png' )" << endl;
+            cout << "'0' + Enter = sortie du programme"   << endl;
             cout << "----------------------------------------------" << endl;
             getline(std::cin,image_name);
         } while (!Saisie_Image.check_input_name(image_name));
@@ -62,5 +64,6 @@ int main( int argc, const char** argv )
     // Fonction detectAndDisplay
     Detection_Image.detectAndDisplay();
     
+    cout << endl << "Fin du programme." << endl << endl;
     return 0;
 }

@@ -11,7 +11,6 @@
 /**
  * Getter full_path
  */
-
 string Saisie::GetFullPath()
 {
     return this->full_path;
@@ -20,7 +19,6 @@ string Saisie::GetFullPath()
 /**
  * Function check_input_path
  */
-
 bool Saisie::check_input_path(string image_path)
 {
     // Test si saisie vide
@@ -32,46 +30,31 @@ bool Saisie::check_input_path(string image_path)
     else{
         // Suppression espaces éventuels "avant" et "après"
         image_path = this->trim(image_path);
+        
+        // Fin de programme demandé par utilisateur
+        if (image_path.compare("0") == 0)
+        {
+            cout << endl << "Fin du programme." << endl << endl;
+            exit(EXIT_SUCCESS);
+        }
+        
         // Recherche espaces "intérieur"
         size_t found=image_path.find(' ');
         if (found!=std::string::npos)
         {
-            // std::cout << "Space found at: " << found << '\n';
+            // Message pour utilisateur et return false
             cout << endl << "Ne pas saisir d'espace! Merci ;)" << endl << endl;
             return false;
         }
     }
     
-//    // Recherche de slashes et antislashes
-//    size_t found_antislash = image_path.find("\\");
-//       if (found_antislash!=std::string::npos)
-//           std::cout << "first '\\' found at: " << found_antislash << '\n';
-//
-//    size_t found_slash = image_path.find("/");
-//        if (found_slash!=std::string::npos)
-//            std::cout << "first '/' found at: " << found_slash << '\n';
-    
-
-    // Si chaîne terminée par un slash ou antislash
+    // Test avec fonction has_ending - Si chaîne terminée par un slash ou antislash
     if(!this->has_ending(image_path, "/") && !this->has_ending(image_path, "\\"))
     {
-//        cout << "aucun slash ou antislsh en fin de chaîne " << endl;
         image_path = image_path + "/";
-        
-//        size_t found = image_path.find_last_of("/\\");
-//        if (found!=std::string::npos)
-//        {
-//            image_path = image_path.substr(0,found);
-//            std::cout << image_path << '\n';
-//        }
-        
     }
     
-//    cout << this->has_ending (image_path, "/") << endl;
-//    cout << this->has_ending (image_path, "\\") << endl;
-    
-    // Chemin accepté
-//    cout << image_path << endl;
+    // Chemin accepté et return true
     this->full_path.assign(image_path);
     return true;
 }
@@ -79,7 +62,6 @@ bool Saisie::check_input_path(string image_path)
 /**
  * Function hasEnding
  */
-
 bool Saisie::has_ending (std::string const &fullString, std::string const &ending) {
     // Test si chaîne à tester > chaîne à rechercher
     if (fullString.length() >= ending.length()) {
@@ -93,7 +75,6 @@ bool Saisie::has_ending (std::string const &fullString, std::string const &endin
 /**
  * Function check_input_name
  */
-
 bool Saisie::check_input_name(string image_name)
 {
     // Test si saisie vide
@@ -105,6 +86,14 @@ bool Saisie::check_input_name(string image_name)
     else{
         // Suppression espaces éventuels "avant" et "après"
         image_name = this->trim(image_name);
+        
+        // Fin de programme demandé par utilisateur
+        if (image_name.compare("0") == 0)
+        {
+            cout << endl << "Fin du programme." << endl << endl;
+            exit(EXIT_SUCCESS);
+        }
+        
         // Recherche espaces "intérieur"
         size_t found=image_name.find(' ');
         if (found!=std::string::npos)
@@ -154,13 +143,17 @@ bool Saisie::check_input_name(string image_name)
         cout << "Extension de fichier non trouvée !" << endl << endl;
         return false;
     }
+    
     // Chemin, nom et extension acceptés
-//    cout << image_name << endl;
+    // Concaténation de chaînes et update full_path
     this->full_path += image_name;
-//    cout << this->full_path << endl;
+
     return true;
 }
 
+/**
+ * Function ltrim
+ */
 string Saisie::ltrim(const string& s)
 {
     // Recherche début de string (non WHITESPACE)
@@ -169,6 +162,9 @@ string Saisie::ltrim(const string& s)
     return (start == string::npos) ? "" : s.substr(start);
 }
 
+/**
+ * Function rtrim
+ */
 string Saisie::rtrim(const string& s)
 {
     // Recherche fin de string (non WHITESPACE)
@@ -177,6 +173,9 @@ string Saisie::rtrim(const string& s)
     return (end == string::npos) ? "" : s.substr(0, end + 1);
 }
 
+/**
+ * Function trim
+ */
 string Saisie::trim(string& s)
 {    
     return this->rtrim(this->ltrim(s));

@@ -108,5 +108,6 @@ void Detection::detectAndDisplay()
     imshow( "Détection de visages", frame );
     
     // Pause (clic souris sur image + touche clavier = exit)
+    cout << "(clic souris sur image + touche clavier = exit)" << endl << endl;
     waitKey(0);
 }

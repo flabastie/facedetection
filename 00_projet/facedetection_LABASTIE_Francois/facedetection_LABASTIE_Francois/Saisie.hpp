@@ -8,12 +8,10 @@
 
 #ifndef Saisie_hpp
 #define Saisie_hpp
-
 #include <stdio.h>
 #include <iostream>
 #include <string>
 #include <algorithm>
-
 #endif /* Saisie_hpp */
 
 using namespace std;
@@ -33,14 +31,16 @@ class Saisie{
     
     private:
     
+        // Variable et constante
         string full_path;
         const string WHITESPACE = " \n\r\t\f\v";
-        
+    
+        // Fonctions traitements de chaînes
         string ltrim(const string& s);
         string rtrim(const string& s);
         string trim(string& s);
         bool has_ending(std::string const &fullString, std::string const &ending);
-
+    
 };
 
 
