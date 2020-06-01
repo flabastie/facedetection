@@ -28,8 +28,11 @@ class Detection
         // Constructeur
         Detection();
     
+        // Function loadImage
+        bool loadImage(string full_path);
+    
         // Function detectAndDisplay
-        void detectAndDisplay(string full_path);
+        void detectAndDisplay();
     
     private:
     
@@ -37,4 +40,5 @@ class Detection
         String face_cascade_name;
         string filename;
         CascadeClassifier face_cascade;
+        Mat frame;
 };

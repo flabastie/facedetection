@@ -16,27 +16,51 @@ Detection::Detection()
     if(!face_cascade.load(this->face_cascade_name))
     {
         cout << "\n--(!)Error loading face cascade\n";
-        EXIT_FAILURE;
+//        EXIT_FAILURE;
     }
+}
+
+/**
+ * Function loadImage
+ */
+
+bool Detection::loadImage(string full_path)
+{
+    try
+    {
+        // call OpenCV
+        this->frame = imread( samples::findFile(full_path), IMREAD_COLOR );
+    }
+    catch( cv::Exception& e )
+    {
+        const char* err_msg = e.what();
+        // cout << "exception caught: " << err_msg << endl;
+    }
+    
+    // Vérification chargement image
+    if (this->frame.empty())
+    {
+        cout << endl << "Image non trouvée !" << endl << endl;
+        return 0;
+    }
+    return 1;
 }
 
 /**
  * Function detectAndDisplay
  */
 
-void Detection::detectAndDisplay(string full_path)
+void Detection::detectAndDisplay()
 {
-    Mat frame = imread( samples::findFile(full_path), IMREAD_COLOR );
-    
     // Test échec chargement => Stop programme
-    if (frame.empty())
+    if (this->frame.empty())
     {
         cout << endl << "Error opening image" << endl;
         EXIT_FAILURE;
     }
 
     Mat frame_gray;
-    cvtColor( frame, frame_gray, COLOR_BGR2GRAY );
+    cvtColor( this->frame, frame_gray, COLOR_BGR2GRAY );
     equalizeHist( frame_gray, frame_gray );
 
     //-- Detect faces

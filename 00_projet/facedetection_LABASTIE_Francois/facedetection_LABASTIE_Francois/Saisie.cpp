@@ -7,10 +7,6 @@
 //
 
 #include "Saisie.hpp"
-#include <iostream>
-#include <string>
-#include <algorithm>
-using namespace std;
 
 /**
  * Getter full_path
