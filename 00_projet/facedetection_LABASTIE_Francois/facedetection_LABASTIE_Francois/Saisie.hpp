@@ -39,6 +39,7 @@ class Saisie{
         string ltrim(const string& s);
         string rtrim(const string& s);
         string trim(string& s);
+        int slash_or_backslash(string& s);
         bool has_ending(std::string const &fullString, std::string const &ending);
     
 };

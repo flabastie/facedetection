@@ -30,7 +30,7 @@ int main( int argc, const char** argv )
     
     // Loop général - Fonction loadImage
     do {
-        // Saisie chemin de l'image à charger
+        // Loop saisie CHEMIN de l'image à charger
         do {
             cout << "---------------------------------------" << endl;
             cout << "Saisir le CHEMIN de l'image à charger :" << endl;
@@ -40,7 +40,7 @@ int main( int argc, const char** argv )
             getline(std::cin,image_path);
         } while (!Saisie_Image.check_input_path(image_path));
         
-        // Saisie nom et extension de l'image à charger
+        // Loop saisie NOM et EXTENSION de l'image à charger
         do {
             cout << endl;
             cout << "----------------------------------------------" << endl;
@@ -51,19 +51,20 @@ int main( int argc, const char** argv )
             getline(std::cin,image_name);
         } while (!Saisie_Image.check_input_name(image_name));
         
-        // Image à détecter
+        // Affichage chemin complet de l'image à détecter
         cout << endl;
         cout << "----------------------------------------------" << endl;
         cout << "Image à détecter : " << endl;
         cout << Saisie_Image.GetFullPath() << endl;
         cout << "----------------------------------------------" << endl;
     
-    // Fonction loadImage (test image ok)
+    // Fin loop général - Fonction loadImage (test image ok)
     } while (!Detection_Image.loadImage(Saisie_Image.GetFullPath()));
     
     // Fonction detectAndDisplay
     Detection_Image.detectAndDisplay();
     
+    // Message de fin de prgramme
     cout << endl << "Fin du programme." << endl << endl;
     return 0;
 }

@@ -9,7 +9,7 @@
 #include "Saisie.hpp"
 
 /**
- * Getter full_path
+ * Getter GetFullPath
  */
 string Saisie::GetFullPath()
 {
@@ -27,6 +27,7 @@ bool Saisie::check_input_path(string image_path)
         cout << "Chaîne saisie vide !" << endl;
         return false;
     }
+    // Si saisie non-vide
     else{
         // Suppression espaces éventuels "avant" et "après"
         image_path = this->trim(image_path);
@@ -48,9 +49,22 @@ bool Saisie::check_input_path(string image_path)
         }
     }
     
-    // Test avec fonction has_ending - Si chaîne terminée par un slash ou antislash
-    if(!this->has_ending(image_path, "/") && !this->has_ending(image_path, "\\"))
+    // Test si slash présent dans chaîne et absent à la fin
+    if(this->slash_or_backslash(image_path)==1 && !this->has_ending(image_path, "/"))
     {
+        // Ajout de slash en fin de chaîne
+        image_path = image_path + "/";
+    }
+    // Test si antislash présent dans chaîne et absent à la fin
+    else if(this->slash_or_backslash(image_path)==2 && !this->has_ending(image_path, "\\"))
+    {
+        // Ajout de antislash en fin de chaîne
+        image_path = image_path + "\\";
+    }
+    // Test si aucun slash ou antislash présent dans chaîne
+    else if(this->slash_or_backslash(image_path)==0)
+    {
+        // Ajout de slash en fin de chaîne
         image_path = image_path + "/";
     }
     
@@ -70,6 +84,32 @@ bool Saisie::has_ending (std::string const &fullString, std::string const &endin
     } else {
         return false;
     }
+}
+
+/**
+ * Function slash_or_backslash
+ * return 1 => slash, 2 => antislash, 0 => aucun
+ */
+int Saisie::slash_or_backslash(string& s)
+{
+    // Recherche slash
+    size_t found_slash=s.find('/');
+    if (found_slash!=std::string::npos)
+    {
+        // Renvoie 1 si slash trouvé
+        return 1;
+    }
+    
+    // Recherche antislash
+    size_t found_backslash=s.find('\\');
+    if (found_backslash!=std::string::npos)
+    {
+        // Renvoie 2 si slash trouvé
+        return 2;
+    }
+    
+    // Renvoie 0 si aucun trouvé
+    return 0;
 }
 
 /**
