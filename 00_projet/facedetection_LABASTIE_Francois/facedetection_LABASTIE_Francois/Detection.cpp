@@ -14,6 +14,9 @@
 
 Detection::Detection()
 {
+    
+    // printf("OpenCV: %s", cv::getBuildInformation().c_str());
+    
     // Chargement fichier cascade
     this->face_cascade_name = samples::findFile(this->cascadeName);
     

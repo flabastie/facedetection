@@ -35,12 +35,16 @@ class Saisie{
         string full_path;
         const string WHITESPACE = " \n\r\t\f\v";
     
-        // Fonctions traitements de chaînes
+        // Fonction ltrim (supprime espaces "avant" la chaîne)
         string ltrim(const string& s);
+        // Fonction rtrim (supprime espaces "après" la chaîne)
         string rtrim(const string& s);
+        // Fonction trim (supprime espaces "avant" et "après")
         string trim(string& s);
+        // Fonction slash_or_backslash (détecte si slash ou antislash présent)
         int slash_or_backslash(string& s);
-        bool has_ending(std::string const &fullString, std::string const &ending);
+        // Fonction has_ending (détecte si slash ou antislash en fin de chaîne)
+        bool has_ending(string const &fullString, string const &ending);
     
 };
 

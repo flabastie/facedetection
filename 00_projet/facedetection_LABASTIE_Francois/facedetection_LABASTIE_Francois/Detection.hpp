@@ -36,9 +36,12 @@ class Detection
     
     private:
     
+        // Constante fichier cascade
         const string cascadeName = "haarcascade_frontalface_alt.xml";
+        // Variables private
         String face_cascade_name;
         string filename;
+        // Objets openCV
         CascadeClassifier face_cascade;
         Mat frame;
 };
