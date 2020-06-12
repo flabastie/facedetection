@@ -14,11 +14,8 @@
 
 Detection::Detection()
 {
-    
-    // printf("OpenCV: %s", cv::getBuildInformation().c_str());
-    
     // Chargement fichier cascade
-    this->face_cascade_name = samples::findFile(this->cascadeName);
+    this->face_cascade_name = samples::findFile(this->file_name);
     
     // Chargement des cascades
     if(!face_cascade.load(this->face_cascade_name))
@@ -107,10 +104,14 @@ void Detection::detectAndDisplay()
             Point(20, frame.rows-18),
             FONT_HERSHEY_COMPLEX, 1, Scalar(255, 255, 255), 2 );
 
+    // Création window pour display.
+    string window_name = "Detection de visages";
+    namedWindow( window_name, WINDOW_AUTOSIZE );
     // Affichage image
-    imshow( "Détection de visages", frame );
+    imshow( window_name, frame );
     
     // Pause (clic souris sur image + touche clavier = exit)
     cout << "(clic souris sur image + touche clavier = exit)" << endl << endl;
     waitKey(0);
+
 }

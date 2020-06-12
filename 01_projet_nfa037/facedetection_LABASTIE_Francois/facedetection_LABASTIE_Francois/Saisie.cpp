@@ -9,7 +9,7 @@
 #include "Saisie.hpp"
 
 /**
- * Getter GetFullPath
+ * Getter get_full_path
  */
 string Saisie::GetFullPath()
 {
@@ -17,9 +17,9 @@ string Saisie::GetFullPath()
 }
 
 /**
- * Function check_input_path
+ * Function checkInputPath
  */
-bool Saisie::check_input_path(string image_path)
+bool Saisie::checkInputPath(string image_path)
 {
     // Test si saisie vide
     if(image_path.empty())
@@ -50,19 +50,19 @@ bool Saisie::check_input_path(string image_path)
     }
     
     // Test si slash présent dans chaîne et absent à la fin
-    if(this->slash_or_backslash(image_path)==1 && !this->has_ending(image_path, "/"))
+    if(this->slashBackslash(image_path)==1 && !this->hasEnding(image_path, "/"))
     {
         // Ajout de slash en fin de chaîne
         image_path = image_path + "/";
     }
     // Test si antislash présent dans chaîne et absent à la fin
-    else if(this->slash_or_backslash(image_path)==2 && !this->has_ending(image_path, "\\"))
+    else if(this->slashBackslash(image_path)==2 && !this->hasEnding(image_path, "\\"))
     {
         // Ajout de antislash en fin de chaîne
         image_path = image_path + "\\";
     }
     // Test si aucun slash ou antislash présent dans chaîne
-    else if(this->slash_or_backslash(image_path)==0)
+    else if(this->slashBackslash(image_path)==0)
     {
         // Ajout de slash en fin de chaîne
         image_path = image_path + "/";
@@ -76,10 +76,10 @@ bool Saisie::check_input_path(string image_path)
 /**
  * Function hasEnding
  */
-bool Saisie::has_ending (std::string const &fullString, std::string const &ending) {
+bool Saisie::hasEnding (std::string const &fullString, std::string const &ending) {
     // Test si chaîne à tester > chaîne à rechercher
     if (fullString.length() >= ending.length()) {
-        // Retourne 1 (true) si final de chaîne à tester égale à chaîne à rechercher
+        // Retourne 1 (true) si final de chaîne à tester est égale à chaîne à rechercher
         return (0 == fullString.compare (fullString.length() - ending.length(), ending.length(), ending));
     } else {
         return false;
@@ -90,7 +90,7 @@ bool Saisie::has_ending (std::string const &fullString, std::string const &endin
  * Function slash_or_backslash
  * return 1 => slash, 2 => antislash, 0 => aucun
  */
-int Saisie::slash_or_backslash(string& s)
+int Saisie::slashBackslash(string& s)
 {
     // Recherche slash
     size_t found_slash=s.find('/');
@@ -113,9 +113,9 @@ int Saisie::slash_or_backslash(string& s)
 }
 
 /**
- * Function check_input_name
+ * Function checkInputName
  */
-bool Saisie::check_input_name(string image_name)
+bool Saisie::checkInputName(string image_name)
 {
     // Test si saisie vide
     if(image_name.empty())

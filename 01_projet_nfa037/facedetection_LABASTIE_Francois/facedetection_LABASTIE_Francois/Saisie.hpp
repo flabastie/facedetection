@@ -22,12 +22,10 @@ class Saisie{
     
         // Getter full_path
         string GetFullPath();
-    
-        // Fonction check_input_name
-        bool check_input_name(string image_name);
-    
-        // Fonction check_input_path
-        bool check_input_path(string image_path);
+        // Fonction checkInputName
+        bool checkInputName(string image_name);
+        // Fonction checkInputPath
+        bool checkInputPath(string image_path);
     
     private:
     
@@ -41,10 +39,10 @@ class Saisie{
         string rtrim(const string& s);
         // Fonction trim (supprime espaces "avant" et "après")
         string trim(string& s);
-        // Fonction slash_or_backslash (détecte si slash ou antislash présent)
-        int slash_or_backslash(string& s);
+        // Fonction slashBackslash (détecte si slash ou antislash présent)
+        int slashBackslash(string& s);
         // Fonction has_ending (détecte si slash ou antislash en fin de chaîne)
-        bool has_ending(string const &fullString, string const &ending);
+        bool hasEnding(string const &fullString, string const &ending);
     
 };
 

@@ -27,20 +27,17 @@ class Detection
 
         // Constructeur
         Detection();
-    
         // Function loadImage
         bool loadImage(string full_path);
-    
         // Function detectAndDisplay
         void detectAndDisplay();
     
     private:
     
         // Constante fichier cascade
-        const string cascadeName = "haarcascade_frontalface_alt.xml";
+        const string file_name = "haarcascade_frontalface_alt.xml";
         // Variables private
         String face_cascade_name;
-        string filename;
         // Objets openCV
         CascadeClassifier face_cascade;
         Mat frame;

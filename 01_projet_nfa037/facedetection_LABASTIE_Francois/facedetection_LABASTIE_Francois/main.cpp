@@ -28,6 +28,8 @@ int main( int argc, const char** argv )
     // Instanciation objet Detection_Image
     Detection Detection_Image;
     
+    cout << "Facedetection - Bienvenue !" << endl << endl;
+    
     // Loop général - Fonction loadImage
     do {
         // Loop saisie CHEMIN de l'image à charger
@@ -35,10 +37,10 @@ int main( int argc, const char** argv )
             cout << "---------------------------------------" << endl;
             cout << "Saisir le CHEMIN de l'image à charger :" << endl;
             cout << "Exemple: '/Users/myname/foldername/' " << endl;
-            cout << "'0' + Enter = sortie du programme"   << endl;
+            cout << "'0' + Enter = sortie du programme" << endl;
             cout << "---------------------------------------" << endl;
             getline(std::cin,image_path);
-        } while (!Saisie_Image.check_input_path(image_path));
+        } while (!Saisie_Image.checkInputPath(image_path));
         
         // Loop saisie NOM et EXTENSION de l'image à charger
         do {
@@ -46,10 +48,10 @@ int main( int argc, const char** argv )
             cout << "----------------------------------------------" << endl;
             cout << "Saisir NOM et EXTENSION de l'image à charger :" << endl;
             cout << "(Exemple: 'image.png' )" << endl;
-            cout << "'0' + Enter = sortie du programme"   << endl;
+            cout << "'0' + Enter = sortie du programme" << endl;
             cout << "----------------------------------------------" << endl;
             getline(std::cin,image_name);
-        } while (!Saisie_Image.check_input_name(image_name));
+        } while (!Saisie_Image.checkInputName(image_name));
         
         // Affichage chemin complet de l'image à détecter
         cout << endl;
